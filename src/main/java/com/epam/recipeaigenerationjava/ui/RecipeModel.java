@@ -1,4 +1,4 @@
-package com.epam.recipeaigenerationjava.model;
+package com.epam.recipeaigenerationjava.ui;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,10 +10,10 @@ import java.util.List;
 @Data
 public class RecipeModel {
 
-    String name;
-    List<IngredientModel> ingredients;
-    String summary;
-    List<String> instructions;
+    private String name;
+    private List<IngredientModel> ingredients;
+    private String summary;
+    private List<String> instructions;
     @Data
     @AllArgsConstructor
     public static class IngredientModel {

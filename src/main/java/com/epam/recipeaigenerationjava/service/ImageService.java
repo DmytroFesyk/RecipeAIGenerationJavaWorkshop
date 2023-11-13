@@ -16,4 +16,9 @@ public class ImageService {
         val imageUrls = imageAIService.generateImage(imageRequest.description(), imageRequest.numberOfImages());
         return new Image(imageUrls);
     }
+
+    public Image generateImage(String description, int numberOfImages, String model, String style) {
+        val imageUrls = imageAIService.generateImage(description, numberOfImages, model, style);
+        return new Image(imageUrls);
+    }
 }

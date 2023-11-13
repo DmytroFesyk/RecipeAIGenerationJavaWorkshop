@@ -1,0 +1,16 @@
+spring:
+  freemarker:
+    template-loader-path: classpath:/templates/
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    request-context-attribute: request
+chatGpt:
+  url: https://api.openai.com/v1/chat/completions
+  key: "" # API key
+dalle:
+  url: https://api.openai.com/v1/images
+  key: "" # API key
+springdoc:
+  swagger-ui:
+    use-root-path: true
