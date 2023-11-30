@@ -28,33 +28,33 @@
             <div class="d-flex flex-column align-items-left input-group-lg mb-3">
                 <label for="dish-type" class="form-label">Choose dish type</label>
                 <select name="dishType" id="dish-type">
-                    <option value="Soup" <#if (RecipeWithImageRequestModel.dishType)! == 'Soup'>selected</#if>>Soup</option>
-                    <option value="Salad" <#if (RecipeWithImageRequestModel.dishType)! == 'Salad'>selected</#if>>Salad</option>
-                    <option value="Pasta" <#if (RecipeWithImageRequestModel.dishType)! == 'Pasta'> selected </#if>>Pasta</option>
-                    <option value="Any" <#if (RecipeWithImageRequestModel.dishType)! == 'Any'>selected</#if>>Any</option>
+                    <option value="Soup" <#if (recipeWithImageRequestModel.dishType)! == 'Soup'>selected</#if>>Soup</option>
+                    <option value="Salad" <#if (recipeWithImageRequestModel.dishType)! == 'Salad'>selected</#if>>Salad</option>
+                    <option value="Pasta" <#if (recipeWithImageRequestModel.dishType)! == 'Pasta'> selected </#if>>Pasta</option>
+                    <option value="Any" <#if (recipeWithImageRequestModel.dishType)! == 'Any'>selected</#if>>Any</option>
                 </select>
                 <label for="exclude-category" class="form-label">Exclude product categories</label>
                 <select name="excludeCalories" id="exclude-category" multiple>
-                    <option value="Meat" <#if (RecipeWithImageRequestModel.excludeCalories)!?seq_contains('Meat')> selected</#if>>Meat</option>
-                    <option value="Fish" <#if (RecipeWithImageRequestModel.excludeCalories)!?seq_contains('Fish') >selected</#if>>Fish</option>
-                    <option value="Nuts" <#if (RecipeWithImageRequestModel.excludeCalories)!?seq_contains('Nuts') >selected</#if> >Nuts</option>
+                    <option value="Meat" <#if (recipeWithImageRequestModel.excludeCalories)!?seq_contains('Meat')> selected</#if>>Meat</option>
+                    <option value="Fish" <#if (recipeWithImageRequestModel.excludeCalories)!?seq_contains('Fish') >selected</#if>>Fish</option>
+                    <option value="Nuts" <#if (recipeWithImageRequestModel.excludeCalories)!?seq_contains('Nuts') >selected</#if> >Nuts</option>
                 </select>
                 <label for="ingredients" class="form-label">Write ingredients separated by `,`</label>
                 <textarea name="ingredients" class="form-control" id="ingredients" rows="3"
-                          placeholder="your ingredients"><#if (RecipeWithImageRequestModel.ingredients)??>${RecipeWithImageRequestModel.ingredients}</#if></textarea>
+                          placeholder="your ingredients"><#if (recipeWithImageRequestModel.ingredients)??>${recipeWithImageRequestModel.ingredients}</#if></textarea>
             </div>
             <div class="d-flex flex-column align-items-left input-group-lg mb-3">
                 <label for="imageNumber" class="form-label">Choose image number from 1 to 2</label>
                 <input type="number" id="imageNumber" name="imageNumber" min="1" max="2" value="1"/>
                 <label for="model" class="form-label">Choose model</label>
                 <select name="imageModel" id="imageModel">
-                    <option value="dall-e-2" <#if (RecipeWithImageRequestModel.imageModel)! == 'dall-e-2'>selected</#if>>DALL·E 2</option>
-                    <option value="dall-e-3" <#if (RecipeWithImageRequestModel.imageModel)! == 'dall-e-3'>selected</#if>>DALL·E 3</option>
+                    <option value="dall-e-2" <#if (recipeWithImageRequestModel.imageModel)! == 'dall-e-2'>selected</#if>>DALL·E 2</option>
+                    <option value="dall-e-3" <#if (recipeWithImageRequestModel.imageModel)! == 'dall-e-3'>selected</#if>>DALL·E 3</option>
                 </select>
                 <label for="style" class="form-label">Choose style</label>
                 <select name="imageStyle" id="imageStyle">
-                    <option value="natural" <#if (RecipeWithImageRequestModel.imageStyle)! == 'natural'>selected</#if>>Natural</option>
-                    <option value="vivid" <#if (RecipeWithImageRequestModel.imageStyle)! == 'vivid'>selected</#if>>Vivid</option>
+                    <option value="natural" <#if (recipeWithImageRequestModel.imageStyle)! == 'natural'>selected</#if>>Natural</option>
+                    <option value="vivid" <#if (recipeWithImageRequestModel.imageStyle)! == 'vivid'>selected</#if>>Vivid</option>
                 </select>
             </div>
             <button id="recipeButton" class="btn btn-primary fs-3 " type="submit" onclick="">Generate Recipe</button>

@@ -1,7 +1,9 @@
 package com.epam.recipeaigenerationjava.ui;
 
+import com.epam.recipeaigenerationjava.model.FullRecipeRequest;
 import com.epam.recipeaigenerationjava.model.RecipeRequest;
 import com.epam.recipeaigenerationjava.service.ImageService;
+import com.epam.recipeaigenerationjava.service.RecipeBuilderService;
 import com.epam.recipeaigenerationjava.service.RecipeService;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
@@ -22,6 +24,7 @@ public class RecipeWebController {
 
     private final RecipeService recipeService;
     private final ImageService imageService;
+    private final RecipeBuilderService recipeBuilderService;
 
     @GetMapping
     public String getRecipeForm(Model model) {
@@ -62,18 +65,18 @@ public class RecipeWebController {
         return "recipe";
     }
 
-//    @PostMapping(path = {"/with-image"})
-//    public String generateRecipeWithImage(@ModelAttribute RecipeWithImageRequestModel recipeWithImageRequestModel, Model model) {
-//        val ingredients = Arrays.stream(recipeWithImageRequestModel.getIngredients().split(",")).map(String::trim).toList();
-//        val recipe = recipeBuilderService.generateRecipe(new FullRecipeRequest(recipeWithImageRequestModel.getDishType(), ingredients, recipeWithImageRequestModel.getExcludeCalories(), recipeWithImageRequestModel.getImageNumber(), recipeWithImageRequestModel.getImageModel(), recipeWithImageRequestModel.getImageStyle()));
-//        val recipeModel = RecipeModel.builder()
-//                .name(recipe.recipe().name())
-//                .ingredients(recipe.recipe().ingredients().stream().map(ingredient -> new RecipeModel.IngredientModel(ingredient.name(), ingredient.amount())).toList())
-//                .summary(recipe.recipe().summary())
-//                .instructions(recipe.recipe().instructions())
-//                .build();
-//        model.addAttribute("recipe", recipeModel);
-//        model.addAttribute("imageUrl", recipe.image().imageUrls().get(0));
-//        return "recipeWithImage";
-//    }
+    @PostMapping(path = {"/with-image"})
+    public String generateRecipeWithImage(@ModelAttribute RecipeWithImageRequestModel recipeWithImageRequestModel, Model model) {
+        val ingredients = Arrays.stream(recipeWithImageRequestModel.getIngredients().split(",")).map(String::trim).toList();
+        val recipe = recipeBuilderService.generateRecipe(new FullRecipeRequest(recipeWithImageRequestModel.getDishType(), ingredients, recipeWithImageRequestModel.getExcludeCalories(), recipeWithImageRequestModel.getImageNumber(), recipeWithImageRequestModel.getImageModel(), recipeWithImageRequestModel.getImageStyle()));
+        val recipeModel = RecipeModel.builder()
+                .name(recipe.recipe().name())
+                .ingredients(recipe.recipe().ingredients().stream().map(ingredient -> new RecipeModel.IngredientModel(ingredient.name(), ingredient.amount())).toList())
+                .summary(recipe.recipe().summary())
+                .instructions(recipe.recipe().instructions())
+                .build();
+        model.addAttribute("recipe", recipeModel);
+        model.addAttribute("imageUrl", recipe.image().imageUrls().get(0));
+        return "recipeWithImage";
+    }
 }
